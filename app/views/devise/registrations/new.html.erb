@@ -5,6 +5,9 @@
 				<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
 					<div class="d-table-cell align-middle">
 
+            <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+
 						<div class="text-center mt-4">
 							<h1 class="h2">Create Account</h1>
 							<p class="lead">
@@ -17,30 +20,30 @@
 								<div class="m-sm-4">
 									<form>
 										<div class="form-group">
-											<label>Nickname</label>
-											<input class="form-control form-control-lg" type="text" name="name" placeholder="Enter your name">
+											<%= f.label :nickname %>
+											<%= f.text_field :nickname, class: "form-control form-control-lg", placeholder: "Enter your name" %>
 										</div>
 										<div class="form-group">
-											<label>Email</label>
-											<input class="form-control form-control-lg" type="text" name="company" placeholder="Enter your email">
+											<%= f.label :email %>
+											<%= f.email_field :email, class: "form-control form-control-lg", placeholder: "Enter your email" %> 
 										</div>
 										<div class="form-group">
-											<label>Password (英数字６文字以上)</label>
-											<input class="form-control form-control-lg" type="email" name="email" placeholder="Enter password">
+										  <%= f.label :password %>
+											<i>(英数字6文字以上)</i>
+											<%= f.password_field :password, autocomplete: "off", class: "form-control form-control-lg", placeholder: "Enter password" %>
 										</div>
 										<div class="form-group">
-											<label>Password confirmation</label>
-											<input class="form-control form-control-lg" type="password" name="password" placeholder="Enter password confirmation">
+										  <%= f.label :password_confirmation %>
+											<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control form-control-lg", placeholder: "Enter password confirmation" %>
 										</div>
 										<div class="text-center mt-3">
-											<a href="index.html" class="btn btn-lg btn-primary">Create Account</a>
-											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
+											<%= f.submit "Create Account", class: "btn btn-lg btn-primary" %>
 										</div>
 									</form>
 								</div>
 							</div>
 						</div>
-
+          <% end %>
 					</div>
 				</div>
 			</div>
