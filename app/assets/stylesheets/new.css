@@ -20,3 +20,15 @@ body{
   border: 1px solid #e5e9f2;
   border-radius: .2rem;
 }
+
+.custom-file {
+  max-width: 20rem;
+  overflow: hidden;
+}
+.custom-file-label {
+  white-space: nowrap;
+}
+
+.custom-height {
+  height: 120px;
+}
