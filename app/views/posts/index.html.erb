@@ -73,8 +73,9 @@
                                【対象年齢】 <%= post.target_age.name %>
                               </div>
                         </div>
-                        <div class="card-footer">
+                        <div class="card-footer d-flex justify-content-between align-items-center">
                           <%= link_to "詳細", post_path(post), class: "btn btn-primary btn-sm" %>
+                          <span>投稿者：<%= post.user.nickname %></span>
                         </div>
                     </div>
                 </div>
