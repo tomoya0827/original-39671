@@ -45,11 +45,9 @@
                 <div class="col-lg-5">
                     <h1 class="font-weight-light">おもちゃについて<br />共有しよう!</h1>
                     <p>3ヶ月から1歳までの赤ちゃんが、どんなおもちゃに興味を示すのか？実体験を元におもちゃを投稿して下さい。皆さんの赤ちゃんのおもちゃ選びの参考になればと考えています。</p>
-                    <a class="btn btn-primary" href="#!">新規投稿する</a>
-                    <%#投稿画面作成後に下記を実装する。その際上記は削除する%>
-                     <%# if user_signed_in? %>
-                      <%#= link_to "新規投稿する", new_post_path, class: "btn btn-primary" %>
-                    <%# end %>
+                     <% if user_signed_in? %>
+                      <%= link_to "新規投稿する", new_post_path, class: "btn btn-primary" %>
+                     <% end %>
                 </div>
             </div>
             <!-- Call to Action-->
