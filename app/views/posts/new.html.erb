@@ -12,28 +12,27 @@
 							</p>
 						</div>
 
-            <%= form_with(model: @post, local: true) do |form| %>
-            
+            <%= form_with model: @post, url:posts_path, local: true do |f| %>
+
             <%#%=form.に下記置き換える。Active StorageとActive Hashを導入してから%>
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
 									<form>
-										<div class="form-group">
-											<input type="file" class="custom-file-input" id="customFile" name="custom[file][]" multiple>
-                      <label class="custom-file-label" for="customFile" data-browse="参照">←画像を選択して下さい。</label>
+										<div class="form-group ">
+											<%= f.file_field :image, id: "post-image", class: "custom-file-input" %>
+                      <label class="custom-file-label" for="post-image" data-browse="参照">←画像を選択して下さい。</label>
 										</div>
                     <div class="form-group">
-											<label>対象年齢</label>
-											<input class="form-control" type="password" name="password">
+											<%= f.label :target_age_id, "対象年齢" %>
+                      <%= f.collection_select(:target_age_id, TargetAge.all, :id, :name, {}, { class: "form-control" }) %>
 										</div>
 										<div class="form-group">
-											<label for="textarea1">コメント（おすすめ理由）:</label>
-                      <textarea id="textarea1" class="form-control form-control-lg custom-height"></textarea>
+											<%= f.label :explanatory_text, "コメント（おすすめ理由）" %>
+                      <%= f.text_area :explanatory_text, id: "textarea1", class: "form-control form-control-lg custom-height" %>
 										</div>
 										<div class="text-center mt-3">
-											<a href="index.html" class="btn btn-lg btn-primary">投稿する</a>
-											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign up</button> -->
+											<%= f.submit "投稿する", class: "btn btn-lg btn-primary" %>
             <% end %>
 										</div>
 									</form>
