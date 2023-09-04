@@ -3,3 +3,9 @@
   height: 200px;
   object-fit: cover;
 }
+
+.navbar-icon {
+  width: 40px;
+  height: auto;
+  margin-right: 5px;
+}
