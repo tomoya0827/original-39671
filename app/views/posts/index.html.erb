@@ -10,16 +10,22 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <%= stylesheet_link_tag "index", "data-turbo-track": "reload" %>
+
     </head>
     <body>
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
             <div class="container px-5">
-                <a class="navbar-brand" href="#!">赤ちゃんとオモチャ（仮称</a>
+                <a class="navbar-brand" href="<%= root_path %>">赤ちゃんとオモチャ（仮称</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                        <% if current_user.present? %>
+                          <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#!"><%= current_user.nickname %>さん</a>
+                          </li>
+                        <% end %>
 
                         <% if user_signed_in? %>
                           <li class="nav-item">
@@ -41,7 +47,9 @@
         <div class="container px-4 px-lg-5">
             <!-- Heading Row-->
             <div class="row gx-4 gx-lg-5 align-items-center my-5">
-                <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="https://drive.google.com/uc?export=download&id=1pTLKuEE7uwuuJc1Emtcda7KrfPGqMXOp" alt="..." /></div>
+              <div class="col-lg-7">
+                <%= image_tag("1.jpg", class: "img-fluid rounded mb-4 mb-lg-0", alt: "Topページの画像が表示されます") %>
+              </div>
                 <div class="col-lg-5">
                     <h1 class="font-weight-light">おもちゃについて<br />共有しよう!</h1>
                     <p>3ヶ月から1歳までの赤ちゃんが、どんなおもちゃに興味を示すのか？実体験を元におもちゃを投稿して下さい。皆さんの赤ちゃんのおもちゃ選びの参考になればと考えています。</p>
@@ -51,38 +59,24 @@
                 </div>
             </div>
             <!-- Call to Action-->
-            <div class="card text-white bg-secondary my-5 py-4 text-center">
+            <div class="card text-white bg-secondary my-5 py-2 text-center">
                 <div class="h1"><p class="text-white m-0">投稿画像一覧</p></div>
             </div>
             <!-- Content Row-->
             <div class="row gx-4 gx-lg-5">
+              <% @posts.each do |post| %>
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h2 class="card-title">画像1</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                            <%= image_tag post.image, class: "img-thumbnail img-cover" %>
+                              <div class="h4">
+                               【対象年齢】 <%= post.target_age.name %>
+                              </div>
                         </div>
                         <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">詳細</a></div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">画像2</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-                        </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">詳細</a></div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">画像3</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-                        </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">詳細</a></div>
-                    </div>
-                </div>
+               <% end %>
             </div>
         </div>
         <!-- Footer-->
