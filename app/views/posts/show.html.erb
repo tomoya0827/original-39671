@@ -1,0 +1,41 @@
+<%= stylesheet_link_tag "new", "data-turbo-track": "reload" %>
+
+<div class="container h-100">
+  <div class="row h-100">
+    <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+      <div class="d-table-cell align-middle">
+        <div class="text-center mt-4">
+          <h1 class="h2 mb-5"><%= @post.user.nickname %> さんの投稿</h1>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <div class="m-sm-4">
+              <form>
+                <div class="text-center mt-3">
+                  <% if user_signed_in? && @post.user == current_user %>
+                    <%#= link_to "編集", edit_post_path(post), class: "btn btn-lg btn-primary mb-4" %>
+                    <%#= link_to "削除", post_path(post), method: :delete, class: "btn btn-lg btn-primary mb-4" %>
+                  <% end %>
+                </div>
+                <div class="form-group">
+                  <%= image_tag @post.image, class: "img-thumbnail" %>
+                </div>
+                <div class="form-group h4">
+                  <label>対象年齢:</label>
+                  <%= @post.target_age.name %>
+                </div>
+                <div class="form-group h5">
+                  <label>コメント（おすすめ理由）:</label>
+                  <%= @post.explanatory_text %>
+                </div>
+                <div class="text-center mt-3">
+                  <%= link_to "戻る", root_path, class: "btn btn-lg btn-primary mt-4" %>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

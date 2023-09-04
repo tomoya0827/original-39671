@@ -73,7 +73,9 @@
                                【対象年齢】 <%= post.target_age.name %>
                               </div>
                         </div>
-                        <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">詳細</a></div>
+                        <div class="card-footer">
+                          <%= link_to "詳細", post_path(post), class: "btn btn-primary btn-sm" %>
+                        </div>
                     </div>
                 </div>
                <% end %>
