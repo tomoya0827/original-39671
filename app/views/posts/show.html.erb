@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag "new", "data-turbo-track": "reload" %>
 
+<body class="bg-light">
 <div class="container h-100">
   <div class="row h-100">
     <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
@@ -20,11 +21,11 @@
                 <div class="form-group">
                   <%= image_tag @post.image, class: "img-thumbnail" %>
                 </div>
-                <div class="form-group h4">
+                <div class="form-group h4 mt-3">
                   <label>対象年齢:</label>
                   <%= @post.target_age.name %>
                 </div>
-                <div class="form-group h5">
+                <div class="form-group h5 mt-3">
                   <label>コメント（おすすめ理由）:</label>
                   <%= @post.explanatory_text %>
                 </div>
@@ -39,3 +40,4 @@
     </div>
   </div>
 </div>
+</body>
