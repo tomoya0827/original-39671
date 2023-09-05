@@ -11,6 +11,47 @@
   </head>
 
   <body>
+
+      <%= stylesheet_link_tag "index", "data-turbo-track": "reload" %>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+            <div class="container px-5">
+                <a class="navbar-brand" href="<%= root_path %>">
+                  <img src="<%= asset_path('2.png') %>" alt="アイコン" class="navbar-icon">
+                  赤ちゃんとオモチャ（仮称）
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <% if current_user.present? %>
+                          <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#!"><%= current_user.nickname %>さん</a>
+                          </li>
+                        <% end %>
+
+                        <% if user_signed_in? %>
+                          <li class="nav-item">
+                            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link", data: { turbo_method: :delete } %>
+                          </li>
+                        <% else %>
+                        <li class="nav-item">
+                            <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+                          </li>
+                        <li class="nav-item">
+                            <%= link_to "新規登録", new_user_registration_path, class: "nav-link" %>
+                        </li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
     <%= yield %>
+
+        <!-- Footer-->
+        <footer class="py-5 bg-secondary">
+            <div class="container px-4 px-lg-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2024</p></div>
+        </footer>
+
   </body>
 </html>
