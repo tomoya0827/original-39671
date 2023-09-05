@@ -20,6 +20,7 @@ has_many :comments
 | user                 | references | null: false, foreign_key: true|
 
 belongs_to :user
+has_many :comments
 
 ## comments テーブル
 
@@ -30,3 +31,4 @@ belongs_to :user
 | user         | references   | null: false, foreign_key: true |
 
 belongs_to :user
+belongs_to :post

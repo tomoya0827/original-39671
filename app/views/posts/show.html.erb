@@ -26,14 +26,35 @@
                   <%= @post.target_age.name %>
                 </div>
                 <div class="form-group h5 mt-3">
-                  <label>コメント（おすすめ理由）:</label>
-                  <%= @post.explanatory_text %>
+                  <label>＜コメント（おすすめ理由）＞</label>
+                  <%= simple_format(@post.explanatory_text) %>
                 </div>
                 <div class="text-center mt-3">
                   <%= link_to "戻る", root_path, class: "btn btn-lg btn-primary mt-4" %>
                 </div>
               </form>
             </div>
+          <div class="m-4">
+            <div id="comments">
+              <h4>＜コメント一覧＞</h4>
+                <% @post.comments.each do |comment| %>
+                  <div class="comment">
+                    <p class="user-info"><%= comment.user.nickname %>: </p>
+                    <p><%= comment.comment%></p>
+                 </div>
+                <% end %>
+            </div>
+
+
+            <div class="comment-form">
+                  <% if user_signed_in? %>
+                    <%= form_with model: [@post, @comment], id: "comment-form" do |f| %>
+                      <%= f.text_area :comment , class: "comment-text" %>
+                      <%= f.submit "コメントをする", class: "comment-submit" %>
+                    <% end %>
+                  <% end %>
+            </div>
+          </div>
           </div>
         </div>
       </div>
