@@ -30,9 +30,18 @@
                 </div>
             </div>
             <!-- Call to Action-->
-            <div class="card text-white bg-secondary my-5 py-2 text-center">
+            <div class="card text-white bg-secondary my-1 py-2 text-center">
                 <div class="h1"><p class="text-white m-0">投稿画像一覧</p></div>
             </div>
+
+            <%= form_with url: posts_path, method: :get do |form| %>
+              <div class="input-group my-4">
+                <%= form.label :target_age_id, "対象年齢", class: "input-group-text" %>
+                <%= form.collection_select :target_age_id, @target_age_options, :id, :name, { prompt: "選択してください" }, { class: "form-select" } %>
+                <%= form.submit "検索", class: "btn btn-outline-primary" %>
+             </div>
+            <% end %>
+
             <!-- Content Row-->
             <div class="row gx-4 gx-lg-5">
               <% @posts.each do |post| %>
@@ -52,6 +61,9 @@
                 </div>
                <% end %>
             </div>
+               <% if params[:target_age_id].present? %>
+                 <%= link_to "検索条件をクリア", posts_path, class: "btn btn-primary d-grid gap-2 col-6 mx-auto mb-4" %>
+               <% end %>
         </div>
        
         <!-- Bootstrap core JS-->

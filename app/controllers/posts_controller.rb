@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all.order("created_at DESC")
+    @target_age_options = TargetAge.exclude_id(1)
+    if params[:target_age_id].present?
+      @posts = @posts.where(target_age_id: params[:target_age_id])
+    end
   end
 
   def new

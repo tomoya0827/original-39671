@@ -16,4 +16,8 @@ class TargetAge < ActiveHash::Base
   include ActiveHash::Associations
   has_many :posts
 
+  def self.exclude_id(id_to_exclude)
+    all.reject { |data| data.id == id_to_exclude }
+  end
+
   end
