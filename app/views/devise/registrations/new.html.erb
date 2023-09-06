@@ -10,7 +10,7 @@
             <%= render "devise/shared/error_messages", resource: resource %>
 
 						<div class="text-center mt-4">
-							<h1 class="h2">Create Account</h1>
+							<h1 class="h2">新規アカウントの作成</h1>
 							<p class="lead">
 								必要事項を入力して新規アカウントの作成を行おう!
 							</p>
@@ -37,8 +37,8 @@
 										  <%= f.label :password_confirmation %>
 											<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control form-control-lg", placeholder: "Enter password confirmation" %>
 										</div>
-										<div class="text-center mt-3">
-											<%= f.submit "Create Account", class: "btn btn-lg btn-primary" %>
+										<div class="text-center d-grid gap-2 mt-3">
+											<%= f.submit "アカウントを作成する", class: "btn btn-lg btn-primary" %>
 										</div>
 									</form>
 								</div>

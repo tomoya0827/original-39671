@@ -29,7 +29,7 @@
                   <label>＜コメント（おすすめ理由）＞</label>
                   <%= simple_format(@post.explanatory_text) %>
                 </div>
-                <div class="text-center mt-3">
+                <div class="text-center d-grid gap-2 mt-3">
                   <%= link_to "戻る", root_path, class: "btn btn-lg btn-primary mt-4" %>
                 </div>
               </form>
@@ -45,15 +45,17 @@
                 <% end %>
             </div>
 
-
-            <div class="comment-form">
+            <div class="form-group">
                   <% if user_signed_in? %>
                     <%= form_with model: [@post, @comment], id: "comment-form" do |f| %>
-                      <%= f.text_area :comment , class: "comment-text" %>
-                      <%= f.submit "コメントをする", class: "comment-submit" %>
+                      <%= f.text_area :comment, class: "form-control form-control mt-3", placeholder: "Enter comment" %>
+                    <div class="text-center d-grid gap-2">
+                      <%= f.submit "コメントをする", class: "comment-submit btn btn-lg btn-primary mt-3" %>
+                    </div>
                     <% end %>
                   <% end %>
             </div>
+
           </div>
           </div>
         </div>
