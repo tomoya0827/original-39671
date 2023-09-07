@@ -11,7 +11,7 @@
 						</div>
 
             <%= form_with model: @post, url: post_path(@post), method: :patch, local: true do |f| %>
-
+						<%= render 'layouts/error_messages', model: f.object %>
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
