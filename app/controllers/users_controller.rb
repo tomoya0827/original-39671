@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+  def show
+      @user = current_user
+      @posts = @user.posts.includes(:user)
+  end
+
   def edit
   end
 
