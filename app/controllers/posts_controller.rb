@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
+
   def index
     @posts = Post.all.order("created_at DESC")
     @target_age_options = TargetAge.exclude_id(1)
