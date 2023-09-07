@@ -48,7 +48,8 @@
             <div class="form-group">
                   <% if user_signed_in? %>
                     <%= form_with model: [@post, @comment], id: "comment-form" do |f| %>
-                      <%= f.text_area :comment, class: "form-control form-control mt-3", placeholder: "Enter comment" %>
+                    <%= render 'layouts/error_messages', model: f.object %>
+                      <%= f.text_area :comment, class: "form-control form-control mt-3 ", placeholder: "Enter comment" %>
                     <div class="text-center d-grid gap-2">
                       <%= f.submit "コメントをする", class: "comment-submit btn btn-lg btn-primary mt-3" %>
                     </div>

@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     if @comment.save
       CommentChannel.broadcast_to @post, { comment: @comment, user: @comment.user }
+    else render template: "posts/show", status: :unprocessable_entity
     end
   end
 
