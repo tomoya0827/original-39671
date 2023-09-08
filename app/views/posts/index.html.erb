@@ -55,7 +55,7 @@
                         </div>
                         <div class="card-footer d-flex justify-content-between align-items-center">
                           <%= link_to "詳細", post_path(post), class: "btn btn-primary btn-sm", data: { turbo: false } %>
-                          <span>投稿者：<%= post.user.nickname %></span>
+                          <span>投稿者：<%= link_to "#{post.user.nickname}", user_path(post.user) %></span>
                         </div>
                     </div>
                 </div>

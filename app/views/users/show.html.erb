@@ -20,14 +20,16 @@
       </div>
     <% end %>
     
+    <% if current_user == @user %>
       <h4>フォロー</h4>
         <% @user.followings.each do |user| %>
           <div class="h6">
-            <p class=“f-user”><%= link_to user.nickname, user_path(user.id) %>さん</p>
+            <p class=“f-user”><%= link_to "#{user.nickname}さん", user_path(user.id) %></p>
         <% end %>
       <h4>フォロワー</h4>
         <% @user.followers.each do |user| %>
-          <p class=“f-user”><%= link_to user.nickname, user_path(user.id) %>さん</p>
+          <p class=“f-user”><%= link_to "#{user.nickname}さん", user_path(user.id) %></p>
         <% end %>
       </div>
+    <% end %>
 </div>
