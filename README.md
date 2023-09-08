@@ -33,6 +33,14 @@ has_many :comments
 belongs_to :user
 belongs_to :post
 
+## relationships テーブル
+
+| Column       | Type         | Options                        |
+| ------------ | ------------ | ------------------------------ |
+| following    | references   | null: false, foreign_key: true |
+| follower     | references   | null: false, foreign_key: true |
+
+
 ## アプリケーション名
 
 

@@ -19,4 +19,15 @@
        </div>
       </div>
     <% end %>
+    
+      <h4>フォロー</h4>
+        <% @user.followings.each do |user| %>
+          <div class="h6">
+            <p class=“f-user”><%= link_to user.nickname, user_path(user.id) %>さん</p>
+        <% end %>
+      <h4>フォロワー</h4>
+        <% @user.followers.each do |user| %>
+          <p class=“f-user”><%= link_to user.nickname, user_path(user.id) %>さん</p>
+        <% end %>
+      </div>
 </div>
