@@ -24,15 +24,15 @@
 											<%= f.file_field :image, id: "post-image", class: "custom-file-input" %>
                       <label class="custom-file-label" for="post-image" data-browse="参照">←画像を選択して下さい。</label>
 										</div>
-                    <div class="form-group">
+                    <div class="form-group mt-3">
 											<%= f.label :target_age_id, "対象年齢" %>
                       <%= f.collection_select(:target_age_id, TargetAge.all, :id, :name, {}, { class: "form-select" }) %>
 										</div>
-										<div class="form-group">
+										<div class="form-group mt-3">
 											<%= f.label :explanatory_text, "コメント（おすすめ理由）" %>
                       <%= f.text_area :explanatory_text, id: "textarea1", class: "form-control form-control-lg custom-height" %>
 										</div>
-										<div class="text-center mt-3 d-grid gap-2">
+										<div class="text-center mt-4 d-grid gap-2">
 											<%= f.submit "投稿する", class: "btn btn-lg btn-primary" %>
             <% end %>
 										</div>
