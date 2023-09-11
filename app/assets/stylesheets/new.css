@@ -40,3 +40,8 @@ body{
 .comment p{
    margin: 0;
 }
+
+.preview-image{
+  height: 150px;
+  width: auto;
+}
