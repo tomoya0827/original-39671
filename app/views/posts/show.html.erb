@@ -36,6 +36,11 @@
                   <label>＜コメント（おすすめ理由）＞</label>
                   <%= simple_format(@post.explanatory_text) %>
                 </div>
+
+                <div id="like-btn<%= @post.id %>">
+                  <%= render partial: "likes/like", locals: { post: @post } %>
+                </div>
+
                 <div class="text-center d-grid gap-2 mt-3">
                   <%= link_to "戻る", root_path, class: "btn btn-lg btn-primary mt-4" %>
                 </div>
