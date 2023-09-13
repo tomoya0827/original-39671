@@ -1,7 +1,9 @@
-<% if user_signed_in? && @post.liked_by?(current_user)%>
+<% if user_signed_in? %>
+  <% if @post.liked_by?(current_user) %>
       <%=link_to "いいね済", post_like_path(@post.id),  data: { turbo_method: :delete }, class: "post_likes", remote: true %>
       <%= post.likes.count %>
     <% else %>
       <%=link_to "いいねする", post_likes_path(@post.id), data: { turbo_method: :post }, class: "post_likes", remote: true %>
       <%= post.likes.count %>
     <% end %>
+<% end %>
